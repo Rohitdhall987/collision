@@ -1,9 +1,9 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "utils.h"
 #include "screens_enum.h"
 #include "main_menu.h"
 #include "aabb_screen.h"
+#include "circle_screen.h"
 
 int main()
 {
@@ -18,6 +18,7 @@ int main()
 
     MainMenu mainScreen(screen);
     AABB aabbScreen(screen);
+    CircleCircle circleScreen(screen);
 
     while (window.isOpen())
     {
@@ -25,9 +26,12 @@ int main()
         {
             if (event->is<sf::Event::Closed>())
                 window.close();
-
-            mainScreen.handleEvents(*event, window);
-            aabbScreen.handleEvents(*event, window);
+            if(screen == Screens::MainMenu)
+                mainScreen.handleEvents(*event, window);
+            if (screen == Screens::AABB)
+                aabbScreen.handleEvents(*event, window);
+            if (screen == Screens::CircleCircle)
+                circleScreen.handleEvents(*event, window);
         }
 
         window.clear();
@@ -40,6 +44,10 @@ int main()
         case Screens::AABB:
             aabbScreen.checkCollision();
             aabbScreen.draw(window);
+            break;
+        case Screens::CircleCircle:
+            circleScreen.checkCollision();
+            circleScreen.draw(window);
             break;
 
         default:

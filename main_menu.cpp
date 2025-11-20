@@ -9,14 +9,22 @@ MainMenu::MainMenu(Screens& screen)
     btnAABB->onClick([&screen] {
         screen = Screens::AABB;
         });
+
+    btnCircle = new util::Button({ 450, 250 }, "CIRCLE - CIRCLE", 32, sf::Color(50, 100, 75));
+
+    btnCircle->onClick([&screen] {
+        screen = Screens::CircleCircle;
+        });
 }
 
 void MainMenu::handleEvents(const sf::Event& event, const sf::RenderWindow& wnd)
 {
     btnAABB->handleEvent(event, wnd);
+    btnCircle->handleEvent(event, wnd);
 }
 
 void MainMenu::draw(sf::RenderWindow& wnd)
 {
     btnAABB->draw(wnd);
+    btnCircle->draw(wnd);
 }

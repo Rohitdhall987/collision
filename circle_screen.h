@@ -3,16 +3,19 @@
 #include "utils.h"
 #include "screens_enum.h"
 
-class MainMenu
+class CircleCircle
 {
-	util::Button* btnAABB;
-	util::Button* btnCircle;
-	Screens screen = Screens::MainMenu;
+	util::Button* back;
+	sf::CircleShape player;
+	sf::CircleShape obstacle;
+	sf::Vector2f playerPos = { 0, 0 };
 
 public:
-	MainMenu(Screens& screen);
+	CircleCircle(Screens& screen);
 
 	void handleEvents(const sf::Event& event, const sf::RenderWindow& wnd);
+
+	void checkCollision();
 
 	void draw(sf::RenderWindow& wnd);
 };
