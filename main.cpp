@@ -4,6 +4,7 @@
 #include "main_menu.h"
 #include "aabb_screen.h"
 #include "circle_screen.h"
+#include "sat_screen.h"
 
 int main()
 {
@@ -19,6 +20,7 @@ int main()
     MainMenu mainScreen(screen);
     AABB aabbScreen(screen);
     CircleCircle circleScreen(screen);
+    SAT satScreen(screen);
 
     while (window.isOpen())
     {
@@ -32,6 +34,8 @@ int main()
                 aabbScreen.handleEvents(*event, window);
             if (screen == Screens::CircleCircle)
                 circleScreen.handleEvents(*event, window);
+            if (screen == Screens::SAT)
+                satScreen.handleEvents(*event, window);
         }
 
         window.clear();
@@ -48,6 +52,11 @@ int main()
         case Screens::CircleCircle:
             circleScreen.checkCollision();
             circleScreen.draw(window);
+            break;
+
+        case Screens::SAT:
+            satScreen.checkCollision();
+            satScreen.draw(window);
             break;
 
         default:

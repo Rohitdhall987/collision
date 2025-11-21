@@ -135,12 +135,14 @@
     <ClCompile Include="circle_screen.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="main_menu.cpp" />
+    <ClCompile Include="sat_screen.cpp" />
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aabb_screen.h" />
     <ClInclude Include="circle_screen.h" />
     <ClInclude Include="main_menu.h" />
+    <ClInclude Include="sat_screen.h" />
     <ClInclude Include="screens_enum.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>

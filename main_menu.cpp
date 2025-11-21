@@ -15,16 +15,24 @@ MainMenu::MainMenu(Screens& screen)
     btnCircle->onClick([&screen] {
         screen = Screens::CircleCircle;
         });
+
+    btnSAT = new util::Button({ 450, 350 }, "SAT", 32, sf::Color(100, 120, 65));
+
+    btnSAT->onClick([&screen] {
+        screen = Screens::SAT;
+        });
 }
 
 void MainMenu::handleEvents(const sf::Event& event, const sf::RenderWindow& wnd)
 {
     btnAABB->handleEvent(event, wnd);
     btnCircle->handleEvent(event, wnd);
+    btnSAT->handleEvent(event, wnd);
 }
 
 void MainMenu::draw(sf::RenderWindow& wnd)
 {
     btnAABB->draw(wnd);
     btnCircle->draw(wnd);
+    btnSAT->draw(wnd);
 }
