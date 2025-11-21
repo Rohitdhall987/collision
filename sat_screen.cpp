@@ -127,20 +127,39 @@ void SAT::checkCollision()
         normals.push_back(normal);
     }
 
+    sf::Vector2f mtvAxis;
+    float mtvOverlap = INFINITY;
+
     for (int i = 0; i < normals.size(); ++i)
     {
-        sf::Vector2f playerBound = calcBounds(player, normals[i]);
-        sf::Vector2f obstacleBound = calcBounds(obstacle, normals[i]);
-        float minA = playerBound.x, minB = obstacleBound.x, maxA = playerBound.y, maxB = obstacleBound.y;
+        sf::Vector2f axis = normals[i];
+        sf::Vector2f playerBound = calcBounds(player, axis);
+        sf::Vector2f obstacleBound = calcBounds(obstacle, axis);
+
+        float minA = playerBound.x, maxA = playerBound.y;
+        float minB = obstacleBound.x, maxB = obstacleBound.y;
 
         if (maxA < minB || maxB < minA)
+            return;
+
+        float overlap = std::min(maxA, maxB) - std::max(minA, minB);
+
+        if (overlap < mtvOverlap)
         {
-            return; // found gap, exit
+            mtvOverlap = overlap;
+            mtvAxis = axis;
         }
     }
 
-    std::cout << "collission!!" << std::endl;
-    // solve collission
+
+    sf::Vector2f diff = player.getPosition() - obstacle.getPosition();
+    if (diff.x * mtvAxis.x + diff.y * mtvAxis.y < 0)
+        mtvAxis = -mtvAxis;
+
+    sf::Vector2f correction = mtvAxis * mtvOverlap;
+    playerPos += correction;
+    player.setPosition(playerPos);
+
 }
 
 void SAT::draw(sf::RenderWindow& wnd)
