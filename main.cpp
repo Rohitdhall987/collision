@@ -8,9 +8,14 @@
 
 int main()
 {
+    sf::ContextSettings settings;
+    settings.antiAliasingLevel = 8;
+
     sf::RenderWindow window(
         sf::VideoMode({ 900u, 900u }),
-        "Collision"
+        "Collision",
+        sf::State::Windowed,
+        settings
     );
 
     window.setVerticalSyncEnabled(1);
