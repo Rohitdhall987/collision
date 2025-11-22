@@ -133,6 +133,7 @@
   <ItemGroup>
     <ClCompile Include="aab_screen.cpp" />
     <ClCompile Include="circle_screen.cpp" />
+    <ClCompile Include="gjk_screen.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="main_menu.cpp" />
     <ClCompile Include="sat_screen.cpp" />
@@ -141,6 +142,7 @@
   <ItemGroup>
     <ClInclude Include="aabb_screen.h" />
     <ClInclude Include="circle_screen.h" />
+    <ClInclude Include="gjk_screen.h" />
     <ClInclude Include="main_menu.h" />
     <ClInclude Include="sat_screen.h" />
     <ClInclude Include="screens_enum.h" />

@@ -158,7 +158,6 @@ void SAT::checkCollision()
 
     sf::Vector2f correction = mtvAxis * mtvOverlap;
     playerPos += correction;
-    player.setPosition(playerPos);
 
 }
 

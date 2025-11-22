@@ -5,6 +5,7 @@
 #include "aabb_screen.h"
 #include "circle_screen.h"
 #include "sat_screen.h"
+#include "gjk_screen.h"
 
 int main()
 {
@@ -26,6 +27,7 @@ int main()
     AABB aabbScreen(screen);
     CircleCircle circleScreen(screen);
     SAT satScreen(screen);
+    GJK gjkScreen(screen);
 
     while (window.isOpen())
     {
@@ -33,6 +35,7 @@ int main()
         {
             if (event->is<sf::Event::Closed>())
                 window.close();
+
             if(screen == Screens::MainMenu)
                 mainScreen.handleEvents(*event, window);
             if (screen == Screens::AABB)
@@ -41,6 +44,8 @@ int main()
                 circleScreen.handleEvents(*event, window);
             if (screen == Screens::SAT)
                 satScreen.handleEvents(*event, window);
+            if (screen == Screens::GJK)
+                gjkScreen.handleEvents(*event, window);
         }
 
         window.clear();
@@ -64,6 +69,11 @@ int main()
             satScreen.draw(window);
             break;
 
+        case Screens::GJK:
+            gjkScreen.checkCollision();
+            gjkScreen.draw(window);
+            break;
+            
         default:
             break;
         }

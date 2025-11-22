@@ -21,6 +21,12 @@ MainMenu::MainMenu(Screens& screen)
     btnSAT->onClick([&screen] {
         screen = Screens::SAT;
         });
+
+    btnGJK = new util::Button({ 450, 450 }, "GJK", 32, sf::Color(80, 80, 165));
+
+    btnGJK->onClick([&screen] {
+        screen = Screens::GJK;
+        });
 }
 
 void MainMenu::handleEvents(const sf::Event& event, const sf::RenderWindow& wnd)
@@ -28,6 +34,7 @@ void MainMenu::handleEvents(const sf::Event& event, const sf::RenderWindow& wnd)
     btnAABB->handleEvent(event, wnd);
     btnCircle->handleEvent(event, wnd);
     btnSAT->handleEvent(event, wnd);
+    btnGJK->handleEvent(event, wnd);
 }
 
 void MainMenu::draw(sf::RenderWindow& wnd)
@@ -35,4 +42,5 @@ void MainMenu::draw(sf::RenderWindow& wnd)
     btnAABB->draw(wnd);
     btnCircle->draw(wnd);
     btnSAT->draw(wnd);
+    btnGJK->draw(wnd);
 }

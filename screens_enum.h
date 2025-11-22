@@ -5,4 +5,5 @@ enum class Screens {
     AABB,
     CircleCircle,
     SAT,
+    GJK,
 };
