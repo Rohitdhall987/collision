@@ -65,12 +65,10 @@ int main()
             break;
 
         case Screens::SAT:
-            satScreen.checkCollision();
             satScreen.draw(window);
             break;
 
         case Screens::GJK:
-            gjkScreen.checkCollision();
             gjkScreen.draw(window);
             break;
             

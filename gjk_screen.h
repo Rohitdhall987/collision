@@ -11,15 +11,18 @@ class GJK
 	sf::Vector2f playerPos = { 0, 0 };
 	float playerRotation = 0;
 
-	sf::Vector2f support(sf::ConvexShape shapeA, sf::ConvexShape shapeB, sf::Vector2f direction);
 	bool processSimplex(std::vector<sf::Vector2f>& simplex, sf::Vector2f& direction);
 
 public:
 	GJK(Screens& screen);
 
+	static sf::Vector2f support(const sf::ConvexShape& shapeA,
+		const sf::ConvexShape& shapeB,
+		sf::Vector2f direction);
+
 	void handleEvents(const sf::Event& event, const sf::RenderWindow& wnd);
 
-	void checkCollision();
+	bool checkCollision();
 
 	void draw(sf::RenderWindow& wnd);
 };
